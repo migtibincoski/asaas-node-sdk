@@ -11,7 +11,7 @@ export default function formatCPF(cpf: string | number): string {
   }
 
   cpf = cpf.toString();
-  cpf = cpf.replaceAll(".", "").replaceAll("-", "");
+  cpf = (cpf as string).replaceAll(".", "").replaceAll("-", "");
 
   if (!/^\d+$/.test(cpf)) {
     throw new CreateError({
@@ -21,21 +21,13 @@ export default function formatCPF(cpf: string | number): string {
     });
   }
 
-  let formatedCPF = "";
-  formatedCPF += `${cpf[0] || ""}`;
-  formatedCPF += `${cpf[1] || ""}`;
-  formatedCPF += `${cpf[2] || ""}`;
-  formatedCPF += `${cpf[3] ? "." : ""}`;
-  formatedCPF += `${cpf[3] || ""}`;
-  formatedCPF += `${cpf[4] || ""}`;
-  formatedCPF += `${cpf[5] || ""}`;
-  formatedCPF += `${cpf[6] ? "." : ""}`;
-  formatedCPF += `${cpf[6] || ""}`;
-  formatedCPF += `${cpf[7] || ""}`;
-  formatedCPF += `${cpf[8] || ""}`;
-  formatedCPF += `${cpf[9] ? "-" : ""}`;
-  formatedCPF += `${cpf[9] || ""}`;
-  formatedCPF += `${cpf[10] || ""}`;
+  const formatedCPF = `${cpf[0] || ""}${cpf[1] || ""}${cpf[2] || ""}${
+    cpf[3] ? "." : ""
+  }${cpf[3] || ""}${cpf[4] || ""}${cpf[5] || ""}${cpf[6] ? "." : ""}${
+    cpf[6] || ""
+  }${cpf[7] || ""}${cpf[8] || ""}${cpf[9] ? "-" : ""}${cpf[9] || ""}${
+    cpf[10] || ""
+  }`;
 
   return formatedCPF;
 }
