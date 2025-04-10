@@ -1,6 +1,12 @@
-type ErrorName = "INVALID_PARAMETERS" | "UNDEFINED_ERROR";
+type ErrorName =
+  | "REQUEST_FAILED"
+  | "INITIALIZATION_ERROR"
+  | "NETWORK_ERROR"
+  | "MISSING_PARAMETERS"
+  | "INVALID_PARAMETERS"
+  | "ERROR";
 
-export default class CreateError extends Error {
+export default class AsaasSdkError extends Error {
   name: ErrorName;
   message: string;
   cause: any;
