@@ -1,9 +1,9 @@
-import CreateError from "./error";
+import AsaasSdkError from "./error";
 import validateCPF from "./validate-cpf";
 
 export default function formatCPF(cpf: string | number): string {
   if (!cpf) {
-    throw new CreateError({
+    throw new AsaasSdkError({
       name: "INVALID_PARAMETERS",
       message: "Invalid CPF",
       cause: "CPF is required",
@@ -14,7 +14,7 @@ export default function formatCPF(cpf: string | number): string {
   cpf = (cpf as string).replaceAll(".", "").replaceAll("-", "");
 
   if (!/^\d+$/.test(cpf)) {
-    throw new CreateError({
+    throw new AsaasSdkError({
       name: "INVALID_PARAMETERS",
       message: "Invalid CPF",
       cause: "CPF must be only numbers",
