@@ -1,7 +1,10 @@
 export default function validateCPF(cpf: string | number): boolean {
   cpf = cpf.toString();
   cpf = cpf.trim();
-  cpf = cpf.replaceAll(/\D/g, "");
+  cpf = cpf.toString().toLowerCase();
+  [" ", ".", "-", "_", ",", "/", "(", ")", ":", ";", "!", "?"].forEach(
+    (char) => (cpf = (cpf as string).replace(new RegExp(`\\${char}`, "g"), ""))
+  );
 
   if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
 

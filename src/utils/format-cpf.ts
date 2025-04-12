@@ -1,5 +1,4 @@
 import AsaasSdkError from "./error";
-import validateCPF from "./validate-cpf";
 
 export default function formatCPF(cpf: string | number): string {
   if (!cpf) {
@@ -11,7 +10,7 @@ export default function formatCPF(cpf: string | number): string {
   }
 
   cpf = cpf.toString();
-  cpf = (cpf as string).replaceAll(".", "").replaceAll("-", "");
+  cpf = (cpf as string).split(".").join("").split("-").join("");
 
   if (!/^\d+$/.test(cpf)) {
     throw new AsaasSdkError({
