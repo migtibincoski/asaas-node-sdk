@@ -6,32 +6,23 @@ A modern and developer-friendly Node.js SDK for the [Asaas API](https://docs.asa
 
 - Full support for Asaas REST API (v3)
 - Easy-to-use methods for common operations
-- Promise-based, fully async/await compatible
 - Built-in TypeScript types and IntelliSense
 - Automatic error handling and response normalization
 - Future-proof and actively maintained
 
 ## 📦 Installation
 
-```bash
-npm install asaas-node-sdk
-# or
-yarn add asaas-node-sdk
-```
-
-## 🚀 Getting Started
-
-This SDK will soon be available as a public package. Stay tuned!
+This package is not yet available for use.
 
 ## 📚 Documentation
 
-For a full list of methods and features, visit the [official Asaas API Reference](https://docs.asaas.com/) or explore our detailed SDK docs (coming soon).
+For a full list of methods and features, visit the [official Asaas API Reference](https://docs.asaas.com/) or explore our detailed SDK docs available [here](https://github.com/migtibincoski/asaas-node-sdk/wiki).
 
 ### Modules Available
 
 - ⚠️ Payment
-	- ✅ Create new payment
-	- ⚠️ List payments
+  - ✅ [Create new payment](https://docs.asaas.com/reference/create-new-payment)
+  - ⚠️ [List payments](https://docs.asaas.com/reference/list-payments)
   - ❌ Create new payment with credit card
   - ❌ Capture payment with Pre-Authorization
   - ❌ Pay a charge with a credit card
@@ -87,6 +78,8 @@ All methods are covered with unit and integration tests. To run tests locally:
 
 ```bash
 npm run test
+# or
+yarn test
 ```
 
 ## 🛠️ Built With
@@ -107,4 +100,4 @@ MIT License. See [LICENSE](./LICENSE) for more information.
 
 ---
 
-Developed with 💙 by [Miguel Tibincoski](https://github.com/migtibincoski)
+Developed with 💙 by [Miguel Tibincoski](https://github.com/migtibincoski), based on [official Asaas API](https://docs.asaas.com).
