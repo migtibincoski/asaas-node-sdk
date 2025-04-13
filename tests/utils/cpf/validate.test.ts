@@ -1,10 +1,4 @@
-import formatCPF from "../src/utils/format-cpf";
-import validateCPF from "../src/utils/validate-cpf";
-
-test("formats CPF correctly", () => {
-  const CPF = "00000000000";
-  expect(formatCPF(CPF)).toBe("000.000.000-00");
-});
+import validateCPF from "../../../src/utils/validate-cpf";
 
 test("validate CPF correctly", () => {
   const invalidCpfWithoutPoints = "00000000000";
