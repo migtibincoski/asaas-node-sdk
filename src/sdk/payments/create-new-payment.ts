@@ -29,7 +29,8 @@ export default async function createNewPayment(
       body.billingType === "UNDEFINED" ||
       body.billingType === "CREDIT_CARD" ||
       body.billingType === "BOLETO" ||
-      body.billingType === "PIX"
+      body.billingType === "PIX" ||
+      body.billingType === ""
     )
   ) {
     throw new AsaasSdkError({
@@ -38,7 +39,7 @@ export default async function createNewPayment(
       cause: `The "billingType" parameter needs to be "UNDEFINED", "CREDIT_CARD", "BOLETO" or "PIX". You provided "${body.billingType}".`,
     });
   } else {
-    body.billingType = "UNDEFINED";
+    if (body.billingType === "") body.billingType = "UNDEFINED";
   }
 
   if (!("value" in body)) {
@@ -47,7 +48,7 @@ export default async function createNewPayment(
       message: "Failed to create a new payment.",
       cause: 'The "value" parameter is missing.',
     });
-  } else if (isNaN(parseInt(body.value as unknown as string))) {
+  } else if (isNaN(Number(body.value))) {
     throw new AsaasSdkError({
       name: "INVALID_PARAMETERS",
       message: "Failed to create a new payment.",
@@ -111,7 +112,7 @@ export default async function createNewPayment(
     throw new AsaasSdkError({
       name: "INVALID_PARAMETERS",
       message: "Failed to create a new payment.",
-      cause: `The "description" parameter needs to be "string". You provided "${typeof body.billingType}".`,
+      cause: `The "description" parameter needs to be "string". You provided "${typeof body.description}".`,
     });
   } else if (body.description && body.description?.length > 500) {
     console.warn(
@@ -123,7 +124,11 @@ export default async function createNewPayment(
   if (
     "daysAfterDueDateToRegistrationCancellation" in body &&
     body.daysAfterDueDateToRegistrationCancellation &&
-    isNaN(parseInt(body.value as unknown as string))
+    isNaN(
+      parseInt(
+        body.daysAfterDueDateToRegistrationCancellation as unknown as string
+      )
+    )
   ) {
     throw new AsaasSdkError({
       name: "INVALID_PARAMETERS",
@@ -169,18 +174,6 @@ export default async function createNewPayment(
       name: "INVALID_PARAMETERS",
       message: "Failed to create a new payment.",
       cause: `The "totalValue" parameter needs to be "number". You provided "${typeof body.totalValue}".`,
-    });
-  }
-
-  if (
-    "externalReference" in body &&
-    body.externalReference &&
-    typeof body.externalReference !== "string"
-  ) {
-    throw new AsaasSdkError({
-      name: "INVALID_PARAMETERS",
-      message: "Failed to create a new payment.",
-      cause: `The "externalReference" parameter needs to be "string". You provided "${typeof body.externalReference}".`,
     });
   }
 
@@ -354,7 +347,12 @@ export default async function createNewPayment(
       });
     }
 
-    if ("callback.autoRedirect" in body && !body.callback.autoRedirect) {
+    if (
+      "callback" in body &&
+      body.callback &&
+      !("autoRedirect" in body.callback) &&
+      !body.callback.autoRedirect
+    ) {
       body.callback.autoRedirect = false;
     }
   }
