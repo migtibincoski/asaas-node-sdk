@@ -1,0 +1,41 @@
+name: Asaas SDK - build and publish
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org/"
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Build project
+        run: yarn build
+
+      - name: Minify files
+        run: |
+          yarn global add esbuild
+          for file in $(find build -name '*.js' -type f); do
+            esbuild "$file" --minify --minify-syntax --minify-whitespace --outfile="$file"
+          done
+
+      - name: Publish to NPM
+        if: success()
+        run: yarn publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
