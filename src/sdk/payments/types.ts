@@ -1,4 +1,9 @@
-export type BillingTypeOptions = "UNDEFINED" | "BOLETO" | "CREDIT_CARD" | "PIX";
+export type BillingTypeOptions =
+  | ""
+  | "UNDEFINED"
+  | "BOLETO"
+  | "CREDIT_CARD"
+  | "PIX";
 export type DiscountTypeOptions = "PERCENTAGE" | "FIXED";
 export type FineTypeOptions = "PERCENTAGE" | "FIXED";
 export type EscrowStatusOptions = "ACTIVE" | "DONE";
