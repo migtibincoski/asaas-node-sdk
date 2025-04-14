@@ -93,7 +93,7 @@ yarn test
 
 ## 🤝 Contributing
 
-We welcome contributions! If you’d like to report bugs, request features or submit pull requests, feel free to open an issue or fork the repo.
+We welcome contributions! If you'd like to report bugs, request features or submit pull requests, feel free to open an issue or fork the repo.
 
 ## 📄 License
 
