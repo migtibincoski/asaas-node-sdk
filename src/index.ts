@@ -4,15 +4,6 @@ import AsaasSdkError from "./utils/error";
 import formatCPF from "./utils/format-cpf";
 import validateCPF from "./utils/validate-cpf";
 
-export default {
-  utils: {
-    cpf: {
-      format: formatCPF,
-      validate: validateCPF,
-    },
-  },
-};
-
 export type AsaasSdkConstructorConfig = {
   baseURL?: string;
   apiKey: string;
@@ -104,3 +95,12 @@ class AsaasSDK {
       Payments.createNewPayment(this, request),
   };
 }
+
+const utils = {
+  cpf: {
+    format: formatCPF,
+    validate: validateCPF,
+  },
+};
+
+export { utils, AsaasSDK };
