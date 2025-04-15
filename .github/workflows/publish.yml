@@ -31,7 +31,7 @@ jobs:
         run: |
           yarn global add esbuild
           for file in $(find build -name '*.js' -type f); do
-            esbuild "$file" --minify --minify-syntax --minify-whitespace --outfile="$file"
+            esbuild "$file" --minify --minify-syntax --minify-whitespace --outfile="$file" --allow-overwrite
           done
 
       - name: Publish to NPM
