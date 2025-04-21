@@ -1,5 +1,12 @@
 # asaas-node-sdk
 
+[![NPM Package Version](https://img.shields.io/npm/v/asaas-js-sdk?style=flat&logo=npm&logoSize=5px&label=version&color=red&cacheSeconds=0)](https://npmjs.com/package/asaas-js-sdk)
+[![NPM Package Downloads](https://img.shields.io/npm/dm/asaas-js-sdk.svg)](https://npmjs.com/package/asaas-js-sdk)
+[![Discord Server](https://img.shields.io/discord/920987652025630730?style=flat&logo=discord&logoColor=white&labelColor=%235865F2&link=https%3A%2F%2Fdiscord.gg%2FNZCGTZ6nnN)](https://discord.gg/NZCGTZ6nnN)
+[![Github Issues](https://img.shields.io/github/issues/migtibincoski/asaas-js-sdk)](https://github.com/migtibincoski/asaas-js-sdk/issues)
+[![Github Pull Requests](https://img.shields.io/github/issues-pr/migtibincoski/asaas-js-sdk)](https://github.com/migtibincoski/asaas-js-sdk/pulls)
+[![NPM Bundle Size](https://img.shields.io/bundlephobia/min/asaas-js-sdk)](https://npmjs.com/package/asaas-js-sdk)
+
 A modern and developer-friendly Node.js SDK for the [Asaas API](https://docs.asaas.com/), designed to simplify and streamline integration with the Asaas platform. Whether you're working with payments, subscriptions, or customer management, this SDK has you covered with clean, intuitive methods and TypeScript support.
 
 ## ✨ Features
@@ -13,7 +20,12 @@ A modern and developer-friendly Node.js SDK for the [Asaas API](https://docs.asa
 
 ## 📦 Installation
 
-This package is not yet available for use.
+It's so simple! Just use: 
+```bash
+npm install asaas-js-sdk
+# or
+yarn add asaas-js-sdk
+```
 
 ## 📚 Documentation
 
@@ -23,8 +35,8 @@ For a full list of methods and features, visit the [official Asaas API Reference
 
 - ⚠️ Payments
   - ✅ [Create new payment](https://docs.asaas.com/reference/create-new-payment)
-  - ⚠️ [List charges](https://docs.asaas.com/reference/list-payments)
-  - ❌ [Create new payment with credit card](https://docs.asaas.com/reference/create-new-payment-with-credit-card)
+  - ✅ [List charges](https://docs.asaas.com/reference/list-payments)
+  - ⚠️ [Create new payment with credit card](https://docs.asaas.com/reference/create-new-payment-with-credit-card)
   - ❌ [Capture payment with pre-authorization](https://docs.asaas.com/reference/capture-payment-with-pre-authorization)
   - ❌ [Pay a charge with a credit card](https://docs.asaas.com/reference/pay-a-charge-with-credit-card)
   - ❌ [Retrieve payment billing information](https://docs.asaas.com/reference/retrieve-payment-billing-information)

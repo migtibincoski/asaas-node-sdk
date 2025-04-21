@@ -94,6 +94,41 @@ export type CreateNewPaymentBody = {
   callback?: CallBackObject;
 };
 
+export type ListPaymentsBody = {
+  installment?: string;
+  offset?: number;
+  limit?: number;
+  customer?: string;
+  customerGroupName?: string;
+  billingType?: BillingTypeOptions;
+  status?: PaymentStatusOptions;
+  subscription?: string;
+  externalReference?: string;
+  paymentDate?: string;
+  invoiceStatus?: InvoiceStatusOptions;
+  estimatedCreditDate?: string;
+  pixQrCodeId?: string;
+  anticipated?: boolean;
+  anticipable?: boolean;
+  dateCreatedGe?: string;
+  dateCreatedLe?: string;
+  paymentDateGe?: string;
+  paymentDateLe?: string;
+  estimatedCreditDateGe?: string;
+  estimatedCreditDateLe?: string;
+  dueDateGe?: string;
+  dueDateLe?: string;
+  user?: string;
+};
+
+export type InvoiceStatusOptions =
+  | "SCHEDULED"
+  | "AUTHORIZED"
+  | "PROCESSING_CANCELLATION"
+  | "CANCELED"
+  | "CANCELLATION_DENIED"
+  | "ERROR";
+
 export type DiscountObject = {
   value: number;
   dueDateLimitDays: number;
@@ -166,9 +201,7 @@ export type CreateNewPaymentResponse200 = {
     dueDateLimitDays: number;
     type: DiscountTypeOptions;
   };
-  fine?: {
-    value: number;
-  };
+  fine?: FineObject;
   interest?: {
     value: number;
   };
@@ -221,4 +254,112 @@ export type CreateNewPaymentResponse200 = {
       done: boolean;
     }>;
   }>;
+};
+
+export type CreditCardObject = {
+  creditCardNumber: string;
+  creditCardBrand: CreditCardBrandOptions;
+  creditCardToken?: string;
+};
+
+export type ChargebackObject = {
+  id: string;
+  payment: string;
+
+  installment?: string;
+  customerAccount: string;
+  status: ChargebackStatusOptions;
+  reason: string;
+  disputeStartDate?: string;
+  value: number;
+  paymentDate?: string;
+  creditCard?: {
+    number: string;
+    brand: CreditCardBrandOptions;
+  };
+  disputeStatus: CreditCardDisputeStatusOptions;
+  deadlineToSendDisputeDocuments?: string;
+};
+
+export type RefundsObject = {
+  dateCreated: string;
+  status: RefundsStatusOptions;
+  value: number;
+  endToEndIdentifier?: string;
+  description?: string;
+  effectiveDate?: string;
+  transactionReceiptUrl?: string;
+  refundedSplits?: RefundedSplitObject[];
+};
+
+export type RefundedSplitObject = {
+  id: string;
+  value: number;
+  done: boolean;
+};
+
+export type PaymentObject = {
+  object: string;
+  id: string;
+  dateCreated: string;
+  customer: string;
+  subscription?: string;
+  installment?: string;
+  paymentLink?: string;
+  value: number;
+  netValue: number;
+  originalValue?: number;
+  interestValue?: number;
+  description?: string;
+  billingType: BillingTypeOptions | "DEBIT_CARD" | "TRANSFER" | "DEPOSIT";
+  creditCard?: CreditCardObject;
+  canBePaidAfterDueDate?: boolean;
+  pixTransaction?: string;
+  pixQrCodeId?: string;
+  status: PaymentStatusOptions;
+  dueDate: string;
+  originalDueDate?: string;
+  paymentDate?: string;
+  clientPaymentDate?: string;
+  installmentNumber?: number;
+  invoiceUrl?: string;
+  invoiceNumber?: string;
+  externalReference?: string;
+  deleted?: boolean;
+  anticipated?: boolean;
+  anticipable?: boolean;
+  creditDate?: string;
+  estimatedCreditDate?: string;
+  transactionReceiptUrl?: string;
+  nossoNumero?: string;
+  bankSlipUrl?: string;
+  discount?: DiscountObject;
+  fine?: FineObject;
+  interest?: InterestObject;
+  split?: (SplitObject & {
+    id: string;
+    totalValue?: number;
+    cancellationReason?: PaymentSplitCancellationReasonOptions;
+    status?: SplitPaymentStatusOptions;
+  })[];
+  postalService?: boolean;
+  daysAfterDueDateToRegistrationCancellation?: number;
+  chargeback?: ChargebackObject;
+  escrow?: {
+    id: string;
+    status: EscrowStatusOptions;
+    expirationDate?: string;
+    finishDate?: string;
+    finishReason?: EscrowFinishReasonOptions;
+  };
+  refunds?: RefundsObject[];
+};
+
+export type ListPaymentsResponse200 = {
+  object: string;
+  hasMore: boolean;
+  totalCount: number;
+  limit: number;
+  offset: number;
+  data: PaymentObject[];
 };
