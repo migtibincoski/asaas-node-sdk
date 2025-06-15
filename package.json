@@ -9,7 +9,8 @@
   "private": false,
   "scripts": {
     "build": "tsup",
-    "test": "jest"
+    "test": "jest",
+    "try": "ts-node --project tsconfig.json src/try.ts"
   },
   "main": "./build/index.js",
   "module": "./build/index.mjs",
