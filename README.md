@@ -1,4 +1,4 @@
-# asaas-node-sdk
+# asaas-js-sdk
 
 [![NPM Package Version](https://img.shields.io/npm/v/asaas-js-sdk?style=flat&logo=npm&logoSize=5px&label=version&color=red&cacheSeconds=0)](https://npmjs.com/package/asaas-js-sdk)
 [![NPM Package Downloads](https://img.shields.io/npm/dm/asaas-js-sdk.svg)](https://npmjs.com/package/asaas-js-sdk)
@@ -29,13 +29,13 @@ yarn add asaas-js-sdk
 
 ## 📚 Documentation
 
-For a full list of methods and features, visit the [official Asaas API Reference](https://docs.asaas.com/) or explore our detailed SDK docs available [here](https://github.com/migtibincoski/asaas-node-sdk/wiki).
+For a full list of methods and features, visit the [official Asaas API Reference](https://docs.asaas.com/) or explore our detailed SDK docs available [here](https://github.com/migtibincoski/asaas-js-sdk/wiki).
 
 ### Available Modules
 
 - ⚠️ Payments
   - ✅ [Create new payment](https://docs.asaas.com/reference/create-new-payment)
-  - ✅ [List charges](https://docs.asaas.com/reference/list-payments)
+  - ✅ [List payments](https://docs.asaas.com/reference/list-payments)
   - ⚠️ [Create new payment with credit card](https://docs.asaas.com/reference/create-new-payment-with-credit-card)
   - ❌ [Capture payment with pre-authorization](https://docs.asaas.com/reference/capture-payment-with-pre-authorization)
   - ❌ [Pay a charge with a credit card](https://docs.asaas.com/reference/pay-a-charge-with-credit-card)
